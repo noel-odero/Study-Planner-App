@@ -49,6 +49,19 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
       initialDate: _selectedDate,
       firstDate: DateTime.now().subtract(const Duration(days: 365)),
       lastDate: DateTime.now().add(const Duration(days: 365 * 5)),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: ColorScheme.light(
+              primary: Colors.amberAccent,
+              onPrimary: Colors.black,
+              surface: Colors.white,
+              onSurface: Colors.black,
+            ),
+          ),
+          child: child!,
+        );
+      },
     );
     if (d != null) setState(() => _selectedDate = d);
   }
@@ -57,6 +70,19 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
     final t = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: ColorScheme.light(
+              primary: Colors.amberAccent,
+              onPrimary: Colors.black,
+              surface: Colors.white,
+              onSurface: Colors.black,
+            ),
+          ),
+          child: child!,
+        );
+      },
     );
     if (t != null) setState(() => _selectedReminderTime = t);
   }
@@ -141,7 +167,6 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
               child: Form(
                 key: _formKey,
                 child: ListView(
-                  // shrinkWrap: true,
                   children: [
                     TextFormField(
                       controller: _titleCtrl,

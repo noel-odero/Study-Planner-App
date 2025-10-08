@@ -37,7 +37,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Settings')),
+      backgroundColor: Colors.black,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 32),
+            child: AppBar(
+              title: Text(
+                'Today',
+                style: TextStyle(color: Colors.white, fontSize: 28),
+              ),
+              backgroundColor: Colors.black,
+            ),
+          ),
+        ),
+      ),
       body: ListView(
         children: [
           SwitchListTile(
@@ -62,6 +77,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Widget _buildBottomNav(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: Colors.black,
+      unselectedItemColor: Colors.white,
+      selectedItemColor: Colors.amberAccent,
       currentIndex: 2,
       onTap: (i) {
         if (i == 0) {
