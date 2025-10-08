@@ -39,13 +39,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80),
+        preferredSize: const Size.fromHeight(80),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(top: 32),
             child: AppBar(
-              title: Text(
-                'Today',
+              title: const Text(
+                'Settings',
                 style: TextStyle(color: Colors.white, fontSize: 28),
               ),
               backgroundColor: Colors.black,
@@ -53,23 +53,55 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
       ),
-      body: ListView(
-        children: [
-          SwitchListTile(
-            title: const Text('Enable Reminders'),
-            value: _remindersEnabled,
-            onChanged: (v) => _setReminders(v),
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(14),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 6,
+                offset: const Offset(0, 2),
+              ),
+            ],
           ),
-          ListTile(
-            title: const Text('Storage'),
-            subtitle: Text(_storageMethod),
+          child: ListView(
+            children: [
+              SwitchListTile(
+                title: const Text(
+                  'Enable Reminders',
+                  style: TextStyle(color: Colors.black),
+                ),
+                value: _remindersEnabled,
+                onChanged: (v) => _setReminders(v),
+                activeColor: Colors.amberAccent,
+                inactiveTrackColor: Colors.black26,
+              ),
+              const Divider(color: Colors.black26),
+              ListTile(
+                title: const Text(
+                  'Storage',
+                  style: TextStyle(color: Colors.black),
+                ),
+                subtitle: Text(
+                  _storageMethod,
+                  style: const TextStyle(color: Colors.black54),
+                ),
+              ),
+              const Divider(color: Colors.black26),
+              const ListTile(
+                title: Text('About', style: TextStyle(color: Colors.black)),
+                subtitle: Text(
+                  'Study Planner - Flutter assignment',
+                  style: TextStyle(color: Colors.black54),
+                ),
+              ),
+            ],
           ),
-          const Divider(),
-          ListTile(
-            title: const Text('About'),
-            subtitle: const Text('Study Planner - Flutter assignment'),
-          ),
-        ],
+        ),
       ),
       bottomNavigationBar: _buildBottomNav(context),
     );
