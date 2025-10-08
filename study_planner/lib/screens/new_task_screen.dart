@@ -103,54 +103,119 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
   Widget build(BuildContext context) {
     final isEditing = _editingId != null;
     return Scaffold(
-      appBar: AppBar(title: Text(isEditing ? 'Edit Task' : 'New Task')),
+      backgroundColor: Colors.black,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 32),
+            child: AppBar(
+              iconTheme: IconThemeData(size: 28, color: Colors.white),
+              title: Text(
+                isEditing ? 'Edit Task' : 'New Task',
+                style: TextStyle(color: Colors.white, fontSize: 28),
+              ),
+              backgroundColor: Colors.black,
+            ),
+          ),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(12),
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            children: [
-              TextFormField(
-                controller: _titleCtrl,
-                decoration: const InputDecoration(labelText: 'Title'),
-                validator: (v) =>
-                    v == null || v.trim().isEmpty ? 'Title required' : null,
-              ),
-              const SizedBox(height: 12),
-              TextFormField(
-                controller: _descCtrl,
-                decoration: const InputDecoration(
-                  labelText: 'Description (optional)',
-                ),
-                maxLines: 3,
-              ),
-              const SizedBox(height: 12),
-              ListTile(
-                title: const Text('Due date'),
-                subtitle: Text(_dateFmt.format(_selectedDate)),
-                trailing: IconButton(
-                  onPressed: _pickDate,
-                  icon: const Icon(Icons.calendar_today),
-                ),
-              ),
-              ListTile(
-                title: const Text('Reminder time (optional)'),
-                subtitle: Text(
-                  _selectedReminderTime == null
-                      ? 'Not set'
-                      : _selectedReminderTime!.format(context),
-                ),
-                trailing: IconButton(
-                  onPressed: _pickTime,
-                  icon: const Icon(Icons.access_time),
-                ),
-              ),
-              const SizedBox(height: 18),
-              ElevatedButton(
-                onPressed: _save,
-                child: Text(isEditing ? 'Save changes' : 'Create task'),
+        child: Container(
+          padding: const EdgeInsets.all(16), // inner spacing
+          decoration: BoxDecoration(
+            color: Colors.white, // container background
+            borderRadius: BorderRadius.circular(12), // rounded corners
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 6,
+                offset: Offset(0, 2),
               ),
             ],
+          ),
+          child: Form(
+            key: _formKey,
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                TextFormField(
+                  controller: _titleCtrl,
+                  style: const TextStyle(color: Colors.black), // input text
+                  decoration: const InputDecoration(
+                    labelText: 'Title',
+                    labelStyle: TextStyle(color: Colors.black54),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black26),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
+                  ),
+                  validator: (v) =>
+                      v == null || v.trim().isEmpty ? 'Title required' : null,
+                ),
+                const SizedBox(height: 12),
+                TextFormField(
+                  controller: _descCtrl,
+                  style: const TextStyle(color: Colors.black),
+                  decoration: const InputDecoration(
+                    labelText: 'Description (optional)',
+                    labelStyle: TextStyle(color: Colors.black54),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black26),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
+                  ),
+                  maxLines: 3,
+                ),
+                const SizedBox(height: 12),
+                ListTile(
+                  title: const Text(
+                    'Due date',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  subtitle: Text(
+                    _dateFmt.format(_selectedDate),
+                    style: const TextStyle(color: Colors.black87),
+                  ),
+                  trailing: IconButton(
+                    onPressed: _pickDate,
+                    icon: const Icon(Icons.calendar_today, color: Colors.black),
+                  ),
+                ),
+                ListTile(
+                  title: const Text(
+                    'Reminder time (optional)',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  subtitle: Text(
+                    _selectedReminderTime == null
+                        ? 'Not set'
+                        : _selectedReminderTime!.format(context),
+                    style: const TextStyle(color: Colors.black87),
+                  ),
+                  trailing: IconButton(
+                    onPressed: _pickTime,
+                    icon: const Icon(Icons.access_time, color: Colors.black),
+                  ),
+                ),
+                const SizedBox(height: 18),
+                ElevatedButton(
+                  onPressed: _save,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black, // button background
+                  ),
+                  child: Text(
+                    _editingId != null ? 'Save changes' : 'Create task',
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

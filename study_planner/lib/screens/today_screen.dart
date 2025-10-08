@@ -37,14 +37,34 @@ class _TodayScreenState extends State<TodayScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Today'), centerTitle: true),
+      backgroundColor: Colors.black,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 32),
+            child: AppBar(
+              title: Text(
+                'Today',
+                style: TextStyle(color: Colors.white, fontSize: 28),
+              ),
+              backgroundColor: Colors.black,
+            ),
+          ),
+        ),
+      ),
       body: RefreshIndicator(
         onRefresh: _loadTodayTasks,
         child: _tasks.isEmpty
             ? ListView(
                 children: const [
                   SizedBox(height: 120),
-                  Center(child: Text('No tasks for today')),
+                  Center(
+                    child: Text(
+                      'No tasks for today',
+                      style: TextStyle(color: Colors.white, fontSize: 24.0),
+                    ),
+                  ),
                 ],
               )
             : ListView.separated(
@@ -76,6 +96,7 @@ class _TodayScreenState extends State<TodayScreen> {
               ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.amberAccent,
         onPressed: () async {
           await Navigator.pushNamed(context, AppRoutes.newTask);
           await _loadTodayTasks();
@@ -88,6 +109,9 @@ class _TodayScreenState extends State<TodayScreen> {
 
   Widget _buildBottomNav(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: Colors.black,
+      unselectedItemColor: Colors.white,
+      selectedItemColor: Colors.amberAccent,
       currentIndex: 0,
       onTap: (i) {
         if (i == 1) {

@@ -18,7 +18,7 @@ class StudyPlannerApp extends StatelessWidget {
       title: 'Study Planner',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.brown,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: AppRoutes.home,
