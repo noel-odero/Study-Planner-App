@@ -34,6 +34,7 @@ class TaskTile extends StatelessWidget {
           onChanged: (v) {
             if (onChanged != null) onChanged!(task.copyWith(done: v ?? false));
           },
+          activeColor: Colors.amberAccent,
         ),
         title: Text(
           task.title,

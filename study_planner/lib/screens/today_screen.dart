@@ -68,7 +68,7 @@ class _TodayScreenState extends State<TodayScreen> {
                 ],
               )
             : ListView.separated(
-                padding: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(24),
                 itemBuilder: (context, idx) {
                   final t = _tasks[idx];
                   return TaskTile(
