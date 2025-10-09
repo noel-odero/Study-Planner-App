@@ -1,12 +1,11 @@
-// lib/models/task.dart
 class Task {
-  final String id; // unique id (string)
-  final String title; // required
-  final String? description; // optional
-  final DateTime dueDate; // required (date, time optional)
-  final DateTime? reminderDateTime; // optional full DateTime for reminder
+  final String id;
+  final String title;
+  final String? description;
+  final DateTime dueDate;
+  final DateTime? reminderDateTime;
   final bool done;
-  final bool reminderShown; // tracks whether reminder has already been shown
+  final bool reminderShown;
 
   Task({
     required this.id,

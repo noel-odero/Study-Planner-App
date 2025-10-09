@@ -1,4 +1,3 @@
-// lib/routes/app_routes.dart
 import 'package:flutter/material.dart';
 import '../screens/today_screen.dart';
 import '../screens/calendar_screen.dart';

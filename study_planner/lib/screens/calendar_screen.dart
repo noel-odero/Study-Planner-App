@@ -1,4 +1,3 @@
-// lib/screens/calendar_screen.dart
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../services/task_storage.dart';
@@ -66,7 +65,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
         padding: const EdgeInsets.all(12),
         child: Column(
           children: [
-            // Calendar Container with Glass Effect
+            // Calendar Container
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -163,7 +162,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               ),
             ),
             const SizedBox(height: 12),
-            // Tasks Container with Glass Effect
+            // Tasks Container
             Expanded(
               child: Container(
                 padding: const EdgeInsets.all(16),

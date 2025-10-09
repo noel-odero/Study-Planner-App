@@ -1,4 +1,3 @@
-// lib/screens/settings_screen.dart
 import 'package:flutter/material.dart';
 import '../services/task_storage.dart';
 import '../routes/app_routes.dart';
