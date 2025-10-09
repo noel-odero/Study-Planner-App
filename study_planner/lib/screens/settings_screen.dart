@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import '../services/task_storage.dart';
 import '../routes/app_routes.dart';
+import 'dart:ui';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -58,8 +59,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Colors.white.withOpacity(0.1),
             borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: Colors.white.withOpacity(0.2),
+              width: 1.5,
+            ),
             boxShadow: [
               BoxShadow(
                 color: Colors.black26,
@@ -68,38 +73,46 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ],
           ),
-          child: ListView(
-            children: [
-              SwitchListTile(
-                title: const Text(
-                  'Enable Reminders',
-                  style: TextStyle(color: Colors.black),
-                ),
-                value: _remindersEnabled,
-                onChanged: (v) => _setReminders(v),
-                activeThumbColor: Colors.amberAccent,
-                inactiveTrackColor: Colors.black26,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(14),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              child: ListView(
+                children: [
+                  SwitchListTile(
+                    title: const Text(
+                      'Enable Reminders',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    value: _remindersEnabled,
+                    onChanged: (v) => _setReminders(v),
+                    activeColor: Colors.amberAccent,
+                    activeTrackColor: Colors.amberAccent.withOpacity(0.5),
+                    inactiveThumbColor: Colors.white38,
+                    inactiveTrackColor: Colors.white24,
+                  ),
+                  Divider(color: Colors.white.withOpacity(0.2)),
+                  ListTile(
+                    title: const Text(
+                      'Storage',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    subtitle: Text(
+                      _storageMethod,
+                      style: const TextStyle(color: Colors.white70),
+                    ),
+                  ),
+                  Divider(color: Colors.white.withOpacity(0.2)),
+                  const ListTile(
+                    title: Text('About', style: TextStyle(color: Colors.white)),
+                    subtitle: Text(
+                      'Study Planner - Flutter assignment',
+                      style: TextStyle(color: Colors.white70),
+                    ),
+                  ),
+                ],
               ),
-              const Divider(color: Colors.black26),
-              ListTile(
-                title: const Text(
-                  'Storage',
-                  style: TextStyle(color: Colors.black),
-                ),
-                subtitle: Text(
-                  _storageMethod,
-                  style: const TextStyle(color: Colors.black54),
-                ),
-              ),
-              const Divider(color: Colors.black26),
-              const ListTile(
-                title: Text('About', style: TextStyle(color: Colors.black)),
-                subtitle: Text(
-                  'Study Planner - Flutter assignment',
-                  style: TextStyle(color: Colors.black54),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),

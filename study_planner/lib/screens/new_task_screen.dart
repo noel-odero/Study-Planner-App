@@ -53,11 +53,16 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.light(
+            colorScheme: ColorScheme.dark(
               primary: Colors.amberAccent,
               onPrimary: Colors.black,
-              surface: Colors.white,
-              onSurface: Colors.black,
+              surface: Color(0xFF1A1A1A),
+              onSurface: Colors.white,
+              background: Colors.black,
+            ),
+            dialogBackgroundColor: Color(0xFF1A1A1A),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(foregroundColor: Colors.amberAccent),
             ),
           ),
           child: child!,
@@ -74,11 +79,16 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.light(
+            colorScheme: ColorScheme.dark(
               primary: Colors.amberAccent,
               onPrimary: Colors.black,
-              surface: Colors.white,
-              onSurface: Colors.black,
+              surface: Color(0xFF1A1A1A),
+              onSurface: Colors.white,
+              background: Colors.black,
+            ),
+            dialogBackgroundColor: Color(0xFF1A1A1A),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(foregroundColor: Colors.amberAccent),
             ),
           ),
           child: child!,

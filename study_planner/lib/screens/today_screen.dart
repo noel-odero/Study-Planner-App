@@ -5,6 +5,7 @@ import '../services/task_storage.dart';
 import '../models/task.dart';
 import '../routes/app_routes.dart';
 import '../widgets/task_tile.dart';
+import 'dart:ui';
 
 class TodayScreen extends StatefulWidget {
   const TodayScreen({super.key});
@@ -61,7 +62,7 @@ class _TodayScreenState extends State<TodayScreen> {
                   SizedBox(height: 120),
                   Center(
                     child: Text(
-                      'No tasks for today',
+                      'Free day today beautiful💛!!',
                       style: TextStyle(color: Colors.white, fontSize: 24.0),
                     ),
                   ),
@@ -71,24 +72,40 @@ class _TodayScreenState extends State<TodayScreen> {
                 padding: const EdgeInsets.all(24),
                 itemBuilder: (context, idx) {
                   final t = _tasks[idx];
-                  return TaskTile(
-                    task: t,
-                    onChanged: (updated) async {
-                      await TaskStorage.instance.updateTask(updated);
-                      await _loadTodayTasks();
-                    },
-                    onDelete: (id) async {
-                      await TaskStorage.instance.deleteTask(id);
-                      await _loadTodayTasks();
-                    },
-                    onEdit: () async {
-                      await Navigator.pushNamed(
-                        context,
-                        AppRoutes.newTask,
-                        arguments: t,
-                      );
-                      await _loadTodayTasks();
-                    },
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Color(0xFF2A2520).withOpacity(0.6),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: Color(0xFF4A3F35).withOpacity(0.3),
+                        width: 1,
+                      ),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                        child: TaskTile(
+                          task: t,
+                          onChanged: (updated) async {
+                            await TaskStorage.instance.updateTask(updated);
+                            await _loadTodayTasks();
+                          },
+                          onDelete: (id) async {
+                            await TaskStorage.instance.deleteTask(id);
+                            await _loadTodayTasks();
+                          },
+                          onEdit: () async {
+                            await Navigator.pushNamed(
+                              context,
+                              AppRoutes.newTask,
+                              arguments: t,
+                            );
+                            await _loadTodayTasks();
+                          },
+                        ),
+                      ),
+                    ),
                   );
                 },
                 separatorBuilder: (_, __) => const SizedBox(height: 8),
