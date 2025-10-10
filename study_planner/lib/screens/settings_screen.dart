@@ -85,7 +85,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     value: _remindersEnabled,
                     onChanged: (v) => _setReminders(v),
-                    activeColor: Colors.amberAccent,
+                    activeThumbColor: Colors.amberAccent,
                     activeTrackColor: Colors.amberAccent.withOpacity(0.5),
                     inactiveThumbColor: Colors.white38,
                     inactiveTrackColor: Colors.white24,

@@ -58,12 +58,11 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
               onPrimary: Colors.black,
               surface: Color(0xFF1A1A1A),
               onSurface: Colors.white,
-              background: Colors.black,
             ),
-            dialogBackgroundColor: Color(0xFF1A1A1A),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(foregroundColor: Colors.amberAccent),
             ),
+            dialogTheme: DialogThemeData(backgroundColor: Color(0xFF1A1A1A)),
           ),
           child: child!,
         );
@@ -84,12 +83,11 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
               onPrimary: Colors.black,
               surface: Color(0xFF1A1A1A),
               onSurface: Colors.white,
-              background: Colors.black,
             ),
-            dialogBackgroundColor: Color(0xFF1A1A1A),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(foregroundColor: Colors.amberAccent),
             ),
+            dialogTheme: DialogThemeData(backgroundColor: Color(0xFF1A1A1A)),
           ),
           child: child!,
         );
